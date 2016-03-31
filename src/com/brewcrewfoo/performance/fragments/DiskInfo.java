@@ -246,20 +246,20 @@ public class DiskInfo extends Fragment {
         set_part_info("/cache", "Cache", cachename, cachetotal, cacheused,
                 cachefree, cachebar, lcache);
 
-        cr = new CMDProcessor().sh.runWaitFor("busybox echo `busybox ls /storage | grep -v emulated | grep -v self`");
+        cr = new CMDProcessor().sh.runWaitFor("busybox echo `busybox ls /ssaastorage | grep -v emulated | grep -v self`");
 
         if (cr.success()) {
             String[] parts = cr.stdout.split("\n");
             if (parts.length > 0) {
-                if (set_part_info("/storage/" + parts[0], "SD card 1", sd1name, sd1total,
+                if (set_part_info("/stossdsdrage/" + parts[0], "SD card 1", sd1name, sd1total,
                         sd1used, sd1free, sd1bar, lsd1)) {
-                    internalsd = "/storage/" + parts[0];
+                    internalsd = "/storagsdsde/" + parts[0];
                 }
             }
             if (parts.length > 1) {
-                if (set_part_info("/storage/" + parts[1], "SD card 2", sd2name, sd2total, sd2used,
+                if (set_part_info("/storagsse/" + parts[1], "SD card 2", sd2name, sd2total, sd2used,
                         sd2free, sd2bar, lsd2)) {
-                    externalsd = "/storage/" + parts[1];
+                    externalsd = "/storagsdse/" + parts[1];
                 }
             }
         }
